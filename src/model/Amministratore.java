@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class Amministratore {
+public class Amministratore { //aggiungere vari fetch
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

@@ -1,14 +1,14 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 
 @Entity
 public class TipoEsame {
@@ -20,13 +20,13 @@ public class TipoEsame {
 	@Column(nullable = false)
 	private String nome;
 	private String descrizione;
-	private Long prezzo;
+	private Long price;
 	
 	@Column(nullable = false)
 	private String code;
 	
-	@OneToMany(mappedBy = "tipoEsame")
-	private List<Esame> esami;
+	//@OneToMany(mappedBy = "tipoEsame")
+	//private List<Esame> esami;
 	
 	
 	
@@ -37,13 +37,13 @@ public class TipoEsame {
 	
 	
 	
-	public TipoEsame(String nome, String descrizione, Long prezzo, String code) {
+	public TipoEsame(String nome, String descrizione, Long price, String code) {
 		super();
 		this.nome = nome;
 		this.descrizione = descrizione;
-		this.prezzo = prezzo;
+		this.price = price;
 		this.code = code;
-		this.esami = new ArrayList<>(); 
+		//this.esami = new ArrayList<>(); 
 	}
 
 
@@ -73,12 +73,12 @@ public class TipoEsame {
 		this.descrizione = descrizione;
 	}
 
-	public Long getPrezzo() {
-		return prezzo;
+	public Long getPrice() {
+		return price;
 	}
 
-	public void setPrezzo(Long prezzo) {
-		this.prezzo = prezzo;
+	public void setPrice(Long price) {
+		this.price = price;
 	}
 
 	public String getCode() {
@@ -89,13 +89,13 @@ public class TipoEsame {
 		this.code = code;
 	}
 
-	public List<Esame> getEsami() {
+	/*public List<Esame> getEsami() {
 		return esami;
 	}
 
 	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
-	}
+	}*/
 
 
 	

@@ -9,12 +9,9 @@ import javax.faces.bean.ManagedProperty;
 import model.TipoEsame;
 import model.TipoEsameFacade;
 
-@ManagedBean(name="tipoEsameController")
+@ManagedBean
 public class TipoEsameController {
-	
-	@EJB(beanName="tFacade")
-	private TipoEsameFacade facade;
-	
+		
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String nome;
@@ -24,21 +21,77 @@ public class TipoEsameController {
 	private TipoEsame tp;
 	private List<TipoEsame> tps;
 	
+	@EJB
+	private TipoEsameFacade facade;
 	
 	public String createTipoEsame(){
 		this.tp = facade.insertTipoEsame(nome, descrizione, price, code);
 		return "tipoEsame";
 	}
-	
+
 	public String listTipoEsami(){
 		this.tps = facade.getAllTipoEsame();
-	return "TipoEasmiList"; //da creare
-}
+		return "tipoEsami"; 
+	}
+	
+	public String findTipoEsame() {
+		this.tp = facade.getTipoEsame(id);
+		return "tipoEsame";
+	}
+	
+	public String findTipoEsame(Long id) {
+		this.tp = facade.getTipoEsame(id);
+		return "tipoEsame";
+	}
 
-	
-	
-	
-	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
+		this.price = price;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public TipoEsame getTp() {
+		return tp;
+	}
+
+	public void setTp(TipoEsame tp) {
+		this.tp = tp;
+	}
+
 	public List<TipoEsame> getTps() {
 		return tps;
 	}
@@ -50,10 +103,6 @@ public class TipoEsameController {
 	public TipoEsameFacade getFacade() {
 		return facade;
 	}
-	
-
-
-
 
 	public void setFacade(TipoEsameFacade facade) {
 		this.facade = facade;
@@ -61,63 +110,7 @@ public class TipoEsameController {
 
 
 
-	public String getNome() {
-		return nome;
-	}
 
-
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-
-	public String getDescrizione() {
-		return descrizione;
-	}
-
-
-
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
-	}
-
-
-
-	public Long getPrice() {
-		return price;
-	}
-
-
-
-	public void setPrice(Long prezzo) {
-		this.price = prezzo;
-	}
-
-
-
-	public String getCode() {
-		return code;
-	}
-
-
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-
-
-	public TipoEsame getTp() {
-		return tp;
-	}
-
-
-
-	public void setTp(TipoEsame tp) {
-		this.tp = tp;
-	}
-
-
+	
+	
 }

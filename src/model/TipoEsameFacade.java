@@ -10,10 +10,10 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 
-@Stateless(name="tFacade")
+@Stateless
 public class TipoEsameFacade {
 	
-	@PersistenceContext(unitName = "unit-progettoSiw")
+	@PersistenceContext(unitName = "siw-progetto")
 	private EntityManager em;
 	
 	public TipoEsame insertTipoEsame(String nome, String descrizione, Long prezzo, String code){
@@ -24,14 +24,6 @@ public class TipoEsameFacade {
 	
 	public void updateTipoEsame(TipoEsame tipoEsame){
 		em.merge(tipoEsame);
-	}
-
-	public List<Esame> addEsame(Esame esame, TipoEsame tipoEsame) {
-		List<Esame> esami= tipoEsame.getEsami();
-		esami.add(esame);
-		tipoEsame.setEsami(esami);
-		em.merge(tipoEsame);
-		return esami;	
 	}
 	
 	public TipoEsame getTipoEsame(Long id) {

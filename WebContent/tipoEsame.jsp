@@ -4,16 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Informazioni sul prodotto</title>
+<title>Informazioni sull'esame</title>
 </head>
 <body>
 <f:view>
 <h1> Informazioni Tipologia Esame </h1>
-<h1>${tipoEsameController.tipoEsame.nome}</h1>
+<h1>${tipoEsameController.tp.nome}</h1>
 <h2>Dettagli</h2>
-<div>Codice: ${tipoEsameController.tipoEsame.code}</div>
-<div>Prezzo: ${tipoEsameController.tipoEsame.price}</div>
-<div>Descrizione: ${tipoEsameController.tipoEsame.descrizione}</div>
+<div>Codice: ${tipoEsameController.tp.code}</div>
+<div>Prezzo: ${tipoEsameController.tp.price}</div>
+<div>Descrizione: ${tipoEsameController.tp.descrizione}</div>
 <ul>
 	<c:if test="${amministratoreController.corrente != null}">	
 		<li><a href='<c:url value="/faces/newTipoEsame.jsp" />'>Inserisci un nuovo tipo di Esame</a></li>

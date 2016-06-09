@@ -1,7 +1,5 @@
 package controller;
 
-
-
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -12,12 +10,10 @@ import javax.faces.bean.SessionScoped;
 import model.Amministratore;
 import model.AmministratoreFacade;
 
-@ManagedBean(name="amministratoreController")
+@ManagedBean
 @SessionScoped
 public class AmministratoreController {
-	
-	
-	
+		
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String cognome;
@@ -62,9 +58,9 @@ public class AmministratoreController {
 					return "index";
 				}
 				else
-					this.errore="Mail o Password errati";
+					this.errore="Username o Password errati";
 			else
-				this.errore="Mail o Password errati";
+				this.errore="Username o Password errati";
 		}
 		return "loginAmministratore";
 	}
@@ -97,8 +93,6 @@ public class AmministratoreController {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	
 
 	public String getUsername() {
 		return username;
@@ -155,6 +149,8 @@ public class AmministratoreController {
 	public void setaFacade(AmministratoreFacade aFacade) {
 		this.aFacade = aFacade;
 	}
+
+
 	
 
 

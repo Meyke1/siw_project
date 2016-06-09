@@ -14,16 +14,21 @@
 <h1><font color="blue" size="8" face="Verdana" >Prenotata un paziente a un esame</font></h1>
 <h2><font color="red" size="5" face="Verdana" >Benvenuto ${amministratoreController.corrente.nome} ${amministratoreController.corrente.cognome}</font></h2>
 <h:form>
+    <div>Codice Esame:<h:inputText value="#{esameController.code}" 
+                     required="true"
+                     requiredMessage="Il codice e' obbligatorio"
+                     id="codice"/> <h:message for="codice" />
+	</div>
     <div>Codice Tipo Esame:<h:inputText value="#{esameController.tid}" 
                      required="true"
                      requiredMessage="Il codice e' obbligatorio"
                      id="tipo"/> <h:message for="tipo" />
 	</div>
-    <div>Codice Medico: <h:inputText value="#{esameController.mid}" 
+    <!--  <div>Codice Medico: <h:inputText value="#{esameController.mid}" 
                      required="true"
                      requiredMessage="Il codice e' obbligatorio"
                      id="medico"/> <h:message for="medico" />
-	</div>
+	</div>-->
 	<div>Codice Paziente: <h:inputText value="#{esameController.pid}" 
                      required="true"
                      requiredMessage="Il codice e' obbligatorio"

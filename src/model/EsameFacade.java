@@ -6,16 +6,17 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 
-@Stateless(name="esameFacade")
+@Stateless
 public class EsameFacade {
-	@PersistenceContext(unitName= "unit-progettoSiw")
+	@PersistenceContext(unitName= "siw-progetto")
 	private EntityManager em;
 	
-	public Esame createEsame(Medico medico, Paziente paziente, TipoEsame tipoEsame) {
-		Esame esame = new Esame(medico, paziente, tipoEsame);
+	public Esame createEsame(Paziente paziente, TipoEsame tipoEsame, String code) {
+		Esame esame = new Esame(paziente, tipoEsame, code);
 		em.persist(esame);
 		return esame;
 	}
@@ -34,6 +35,12 @@ public class EsameFacade {
         cq.select(cq.from(Esame.class));
         List<Esame> esami = em.createQuery(cq).getResultList();
 		return esami;
+	}
+	
+	public Esame findEsame(String code){
+		Query q = em.createQuery("SELECT e FROM Esame e WHERE e.code='"+ code + "'");
+		Esame e = (Esame)q.getSingleResult();
+		return e;
 	}
 	
 

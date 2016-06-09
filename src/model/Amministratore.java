@@ -63,6 +63,19 @@ public class Amministratore {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	@Override
 	public int hashCode() {
@@ -76,13 +89,7 @@ public class Amministratore {
 		return result;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 
 	@Override
 	public boolean equals(Object obj) {

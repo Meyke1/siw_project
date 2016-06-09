@@ -3,46 +3,57 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import model.Esame;
 import model.EsameFacade;
-import model.Medico;
-import model.MedicoFacade;
+//import model.Medico;
+//import model.MedicoFacade;
 import model.Paziente;
 import model.PazienteFacade;
 import model.TipoEsame;
 import model.TipoEsameFacade;
 
-
-
 @ManagedBean
 public class EsameController {
-	@ManagedProperty(value="#{param.id}")
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String pid;
 	private Paziente paziente;
 	private String mid;
-	private Medico medico;
+	//private Medico medico;
 	private Esame esame;
 	private List<Esame> esami;
 	private String tid;
 	private TipoEsame tipoEsame;
+	private String code;
 	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	@EJB
 	private EsameFacade eFacade;
 	@EJB
 	private PazienteFacade pFacade;
-	@EJB
-	private MedicoFacade mFacade;
+	//@EJB
+	//private MedicoFacade mFacade;
 	@EJB
 	private TipoEsameFacade tFacade;
 	
 	public String creaEsame(){
-		this.paziente = this.pFacade.getPaziente(pid);
-		this.medico = this.mFacade.getMedico(mid);
+		this.paziente = this.pFacade.findPaziente(pid);
+		//this.medico = this.mFacade.getMedico(mid);
 		this.tipoEsame = this.tFacade.findTipoEsame(tid);
-		this.esame = this.eFacade.createEsame(medico, paziente, tipoEsame);
+		this.esame = this.eFacade.createEsame(paziente, tipoEsame, code);
 		return "creaEsame"; 
 	}
 	
@@ -108,7 +119,7 @@ public class EsameController {
 	public void setMid(String mid) {
 		this.mid = mid;
 	}
-
+/*
 	public Medico getMedico() {
 		return medico;
 	}
@@ -116,7 +127,7 @@ public class EsameController {
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
-
+*/
 	public Esame getEsame() {
 		return esame;
 	}
@@ -156,7 +167,7 @@ public class EsameController {
 	public void setpFacade(PazienteFacade pFacade) {
 		this.pFacade = pFacade;
 	}
-
+/*
 	public MedicoFacade getmFacade() {
 		return mFacade;
 	}
@@ -164,6 +175,6 @@ public class EsameController {
 	public void setmFacade(MedicoFacade mFacade) {
 		this.mFacade = mFacade;
 	}
-
+*/
 	
 }

@@ -2,12 +2,14 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+//import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,19 +19,20 @@ public class Esame {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private Date dataEsecuzione;
-	
+	@Column(nullable = false)
+	private String code;
 	
 	@Temporal (TemporalType.TIMESTAMP)
 	private Date creationTime;
 	@ManyToOne
+	@JoinColumn (name="tipoEsame_id")
 	private TipoEsame tipoEsame;
 	
-	@OneToOne
-	private RisultatoEsame risultato;
+//	@OneToOne
+//	private RisultatoEsame risultato;
 	
-	@ManyToOne
-	private Medico medico;
+//	@ManyToOne
+//	private Medico medico;
 	
 	@ManyToOne
 	private Paziente paziente;
@@ -37,11 +40,20 @@ public class Esame {
 	
 	public Esame(){}
 
-	public Esame(Medico medico, Paziente paziente, TipoEsame tipoEsame) {
+	public Esame(Paziente paziente, TipoEsame tipoEsame, String code) {
 		super();
-		this.medico = medico;
+		//this.medico = medico;
 		this.paziente = paziente;
 		this.tipoEsame = tipoEsame;
+		this.code = code;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public Long getId() {
@@ -50,15 +62,6 @@ public class Esame {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-
-	public Date getDataEsecuzione() {
-		return dataEsecuzione;
-	}
-
-	public void setDataEsecuzione(Date dataEsecuzione) {
-		this.dataEsecuzione = dataEsecuzione;
 	}
 
 	public Date getCreationTime() {
@@ -76,7 +79,7 @@ public class Esame {
 	public void setTipoEsame(TipoEsame tipoEsame) {
 		this.tipoEsame = tipoEsame;
 	}
-
+/*
 	public RisultatoEsame getRisultato() {
 		return risultato;
 	}
@@ -92,7 +95,7 @@ public class Esame {
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
-
+*/
 	public Paziente getPaziente() {
 		return paziente;
 	}

@@ -10,16 +10,19 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import model.Esame;
+
+//import model.Esame;
 import model.Paziente;
 import model.PazienteFacade;
 
 
 
 
-@ManagedBean(name="pazienteController")
+
+@ManagedBean
 @SessionScoped
 public class PazienteController {
+	
 	
 	@EJB
 	private PazienteFacade pazienteFacade;
@@ -35,14 +38,15 @@ public class PazienteController {
 	private String username;
 	private String password;
 	private String errore;
+	private String code;
 	
 	private Paziente paziente;
-	private Paziente corrente;
-	private List<Esame> esami;
+	private Paziente corrente = null;
+	//private List<Esame> esami;
 	private List<Paziente> pazienti;
 	
 	public String createPaziente() {
-		this.paziente = pazienteFacade.createPaziente(nome, cognome, dataDiNascita, new Date(), indirizzo, username, password);
+		this.paziente = pazienteFacade.createPaziente(nome, cognome, dataDiNascita, new Date(), indirizzo, username, password, code);
 		return "paziente"; 
 	}
 	
@@ -56,9 +60,9 @@ public class PazienteController {
 					return "index";
 				}
 				else
-					this.errore="Mail o Password errati";
+					this.errore="Username o Password errati";
 			else
-				this.errore="Mail o Password errati";
+				this.errore="Username o Password errati";
 		}
 		return "loginPaziente";
 	}
@@ -168,7 +172,7 @@ public class PazienteController {
 	public void setCorrente(Paziente corrente) {
 		this.corrente = corrente;
 	}
-
+/*
 	public List<Esame> getEsami() {
 		return esami;
 	}
@@ -176,7 +180,7 @@ public class PazienteController {
 	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
 	}
-
+*/
 	public List<Paziente> getPazienti() {
 		return pazienti;
 	}
@@ -184,6 +188,17 @@ public class PazienteController {
 	public void setPazienti(List<Paziente> pazienti) {
 		this.pazienti = pazienti;
 	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	} 
+	
+	
+	
 }
 	
 	

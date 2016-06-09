@@ -2,8 +2,6 @@ package model;
 
 
 
-
-
 import java.util.Date;
 import java.util.List;
 
@@ -14,38 +12,26 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 
-@Stateless(name="pazienteFacade")
+@Stateless
 public class PazienteFacade {
-	@PersistenceContext(unitName= "unit-progettoSiw")
+	@PersistenceContext(unitName= "siw-progetto")
 	private EntityManager em;
 	
-	
-
-
-	public EntityManager getEm() {
-		return em;
-	}
-
-
-	public void setEm(EntityManager em) {
-		this.em = em;
-	}
-	
-	public Paziente createPaziente(String nome, String cognome, Date dataDiNascita, Date dataIscrizione, String indirizzo, String username, String password){
-		Paziente paziente = new Paziente(nome, cognome, dataDiNascita, dataIscrizione, indirizzo, username, password);
+	public Paziente createPaziente(String nome, String cognome, Date dataDiNascita, Date dataIscrizione, String indirizzo, String username, String password, String code){
+		Paziente paziente = new Paziente(nome, cognome, dataDiNascita, dataIscrizione, indirizzo, username, password, code);
 		em.persist(paziente);
 		return paziente;
 	}
 
-	public void addEsame(Paziente paziente, Esame esame) {
-		paziente.getEsami().add(esame);
-		em.merge(paziente);
-	}
-	
-	public Paziente getPaziente(String code){
+	public Paziente findPaziente(String code){
 		Query q = em.createQuery("SELECT p FROM Paziente p WHERE p.code='"+ code + "'");
 		Paziente p = (Paziente)q.getSingleResult();
 		return p;
+	}
+	
+	public Paziente getPaziente(Long id) {
+	    Paziente paziente = em.find(Paziente.class, id);
+		return paziente;
 	}
 	
 	public List<Paziente> getAllPazienti() {

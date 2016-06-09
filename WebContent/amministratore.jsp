@@ -10,7 +10,7 @@
 </head>
 <body>
 <f:view>
-<h1>${amministratoreController.amministratore.mail}</h1>
+<h1>${amministratoreController.amministratore.username}</h1>
 <h2>Dettagli</h2>
 <div>Nome: ${amministratoreController.amministratore.nome}</div>
 <div>Cognome: ${amministratoreController.amministratore.cognome}</div>

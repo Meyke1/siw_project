@@ -21,6 +21,7 @@
 <title>SIW-PROGETTO-ESAME</title>
 </head>
 <body>
+<f:view>
 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -44,15 +45,15 @@
 			<a href='<c:url value="/faces/loginAmministratore.jsp" />'>Effettua il login Amministratore</a>
 		</c:if></li>
 		<li><c:if test="${amministratoreController.corrente != null}">
-			<h:form><h:commandLink action="#{amministratoreController.logoutAmministratore}" value="LOGOUT"/></h:form>
+			<h:form><h:commandLink styleClass="btn btn-info" action="#{amministratoreController.logoutAmministratore}" value="LOGOUT"/></h:form>
 		</c:if></li>
 		<li><c:if test="${pazienteController.corrente != null}">
-			<h:form><h:commandLink action="#{pazienteController.logoutPaziente}" value="LOGOUT"/></h:form>
+			<h:form><h:commandLink styleClass="btn btn-info" action="#{pazienteController.logoutPaziente}" value="LOGOUT"/></h:form>
 		</c:if></li>	
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
-	<f:view>
+
 		<div class="jumbotron">
 			<div class="container">
 
@@ -88,6 +89,11 @@
 			</h:commandLink>
 			</h:form></h1>
 		</c:if>
+		<h2>Operazioni:</h2> 
+		<ul>
+			<li><h:form><h:commandLink action="#{tipoEsameController.listTipoEsami}" value="Visualizza gli esami che offriamo"/></h:form></li>
+			<li><a href='<c:url value="/faces/registraAmministratore.jsp" />'>Registrati come amministratore</a></li>
+		</ul>
 		<h2>Realizzato dagli studenti:</h2>
 		<ul>
 			<li>Tedesco Michele</li>

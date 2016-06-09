@@ -37,7 +37,7 @@
    
 	
 	<div>
-		<h:commandButton value="Inserisci Tipo Esame"  action="#{esameController.creaEsame}"/>
+		<h:commandButton value="Invia"  action="#{esameController.creaEsame}"/>
 	</div>
 	<h:commandLink action="#{tipoEsameController.listTipoEsami}" value="Lista delle tipologie di esame" />
 	<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>

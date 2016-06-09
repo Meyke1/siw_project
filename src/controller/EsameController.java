@@ -3,9 +3,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.faces.bean.ManagedProperty;
 
 import model.Esame;
 import model.EsameFacade;
@@ -19,8 +17,7 @@ import model.TipoEsameFacade;
 @ManagedBean
 public class EsameController {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String pid;
 	private Paziente paziente;
@@ -54,7 +51,7 @@ public class EsameController {
 		//this.medico = this.mFacade.getMedico(mid);
 		this.tipoEsame = this.tFacade.findTipoEsame(tid);
 		this.esame = this.eFacade.createEsame(paziente, tipoEsame, code);
-		return "creaEsame"; 
+		return "esame"; 
 	}
 	
 	public String getTid() {
@@ -75,17 +72,17 @@ public class EsameController {
 
 	public String listEsami() {
 		this.esami = eFacade.getAllEsami();
-		return "Esami"; 
+		return "esamiPaziente"; 
 	}
 
 	public String findEsame() {
 		this.esame = eFacade.getEsame(id);
-		return "Esame";
+		return "esame";
 	}
 	
 	public String findEsame(Long id) {
 		this.esame = eFacade.getEsame(id);
-		return "Esame";
+		return "esame";
 	}
 
 	public Long getId() {

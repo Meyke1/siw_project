@@ -46,7 +46,7 @@ public class PazienteController {
 		return "paziente"; 
 	}
 	
-	public String loginUtente(){
+	public String loginPaziente(){
 		this.pazienti = pazienteFacade.getAllPazienti();
 		for(Paziente p: pazienti){
 			if(username.equals(p.getUsername()))

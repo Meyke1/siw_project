@@ -10,8 +10,6 @@ import model.Esame;
 import model.EsameFacade;
 import model.Medico;
 import model.MedicoFacade;
-//import model.Medico;
-//import model.MedicoFacade;
 import model.Paziente;
 import model.PazienteFacade;
 import model.TipoEsame;
@@ -28,10 +26,13 @@ public class EsameController {
 	private Medico medico;
 	private Esame esame;
 	private List<Esame> esami;
+	private List<Esame> esamiMedico;
 	private String tid;
 	private TipoEsame tipoEsame;
 	private String code;
 	private Date dataDiPrenotazione;
+	private String nomeMedico;
+	private String cognomeMedico;
 
 	@EJB
 	private EsameFacade eFacade;
@@ -56,6 +57,12 @@ public class EsameController {
 		this.esame.setMedico(medico);
 		this.eFacade.updateEsame(esame);
 		return "esame";
+	}
+	
+	public String findEsamiMedico(){
+		this.medico = this.mFacade.searchByName(this.nomeMedico,this.cognomeMedico);
+		this.esamiMedico = eFacade.getAllEsamiMedico(medico);
+		return "listEsamiMedico";
 	}
 	
 	public String getTid() {
@@ -196,6 +203,34 @@ public class EsameController {
 	public void setCode(String code) {
 		this.code = code;
 	}
+
+	public String getNomeMedico() {
+		return nomeMedico;
+	}
+
+	public void setNomeMedico(String nomeMedico) {
+		this.nomeMedico = nomeMedico;
+	}
+
+	public String getCognomeMedico() {
+		return cognomeMedico;
+	}
+
+	public void setCognomeMedico(String cognomeMedico) {
+		this.cognomeMedico = cognomeMedico;
+	}
+
+	public List<Esame> getEsamiMedico() {
+		return esamiMedico;
+	}
+
+	public void setEsamiMedico(List<Esame> esamiMedico) {
+		this.esamiMedico = esamiMedico;
+	}
+	
+	
+	
+	
 
 	
 }

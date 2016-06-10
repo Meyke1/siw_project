@@ -38,6 +38,14 @@ public class EsameFacade {
 		return esami;
 	}
 	
+	//si poteva usare anche CriteriaBuilder. NOTA: la query deve essere tutta stringata. Altimenti convertire (es Long-->String)
+	@SuppressWarnings("unchecked")
+	public List<Esame> getAllEsamiMedico(Medico medico) {
+		Query q = em.createQuery("SELECT e FROM Esame e WHERE e.medico.nome='"+ medico.getNome() + "' AND e.medico.cognome='"+ medico.getCognome() + "'");
+        List<Esame> esami = q.getResultList();
+		return esami;
+	}
+	
 	public Esame findEsame(String code){
 		Query q = em.createQuery("SELECT e FROM Esame e WHERE e.code='"+ code + "'");
 		Esame e = (Esame)q.getSingleResult();

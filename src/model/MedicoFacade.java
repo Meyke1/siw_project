@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 
@@ -35,6 +36,12 @@ public class MedicoFacade {
 	
 	public void updateMedico(Medico medico) {
         em.merge(medico);
+	}
+	
+	public Medico searchByName(String nome, String cognome) {
+		Query q = em.createQuery("SELECT m FROM Medico m WHERE m.nome='"+ nome + "' AND m.cognome='"+cognome+"'");
+		Medico m = (Medico)q.getSingleResult();
+        return m;
 	}
 
 }

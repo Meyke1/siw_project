@@ -13,6 +13,9 @@
 
 	<f:view>
 		<h:form>
+		    <div>
+			    <font color="#DC143C" size="4">${esameController.errore}</font>
+		    </div>
 			<div>
 				Nome medico:
 				<h:inputText value="#{esameController.nomeMedico}" 

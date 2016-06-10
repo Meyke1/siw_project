@@ -33,6 +33,7 @@ public class EsameController {
 	private Date dataDiPrenotazione;
 	private String nomeMedico;
 	private String cognomeMedico;
+	private String errore;
 
 	@EJB
 	private EsameFacade eFacade;
@@ -61,8 +62,16 @@ public class EsameController {
 	
 	public String findEsamiMedico(){
 		this.medico = this.mFacade.searchByName(this.nomeMedico,this.cognomeMedico);
-		this.esamiMedico = eFacade.getAllEsamiMedico(medico);
-		return "listEsamiMedico";
+		if (medico==null){
+			this.errore = "medico non presente nel db";
+			return "esamiMedico";
+			}
+		else{
+			this.errore = null;
+			this.esamiMedico = eFacade.getAllEsamiMedico(medico);
+			return "listEsamiMedico";
+		}
+		
 	}
 	
 	public String getTid() {
@@ -227,6 +236,16 @@ public class EsameController {
 	public void setEsamiMedico(List<Esame> esamiMedico) {
 		this.esamiMedico = esamiMedico;
 	}
+
+	public String getErrore() {
+		return errore;
+	}
+
+	public void setErrore(String errore) {
+		this.errore = errore;
+	}
+	
+	
 	
 	
 	

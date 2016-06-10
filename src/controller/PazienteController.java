@@ -42,7 +42,6 @@ public class PazienteController {
 	
 	private Paziente paziente;
 	private Paziente corrente = null;
-	//private List<Esame> esami;
 	private List<Paziente> pazienti;
 	
 	public String createPaziente() {
@@ -70,11 +69,6 @@ public class PazienteController {
 	public String logoutPaziente(){
 		this.corrente=null;
 		return "index";
-	}
-	
-	public String listEsami(){
-		//this.esami = this.paziente.getEsami();
-		return "listEsami"; 
 	}
 
 	public PazienteFacade getPazienteFacade() {
@@ -172,15 +166,7 @@ public class PazienteController {
 	public void setCorrente(Paziente corrente) {
 		this.corrente = corrente;
 	}
-/*
-	public List<Esame> getEsami() {
-		return esami;
-	}
 
-	public void setEsami(List<Esame> esami) {
-		this.esami = esami;
-	}
-*/
 	public List<Paziente> getPazienti() {
 		this.pazienti = pazienteFacade.getAllPazienti();
 		return pazienti;

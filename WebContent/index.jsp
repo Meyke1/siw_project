@@ -81,6 +81,10 @@
 			<h1><a href='<c:url value="/faces/newTipoEsame.jsp" />' class="btn btn-info">Inserisci un nuovo tipo di esame </a></h1>
 		    <h1><a href='<c:url value="/faces/registraPaziente.jsp" />' class="btn btn-info">Registra Paziente</a></h1>
 			<h1><a href='<c:url value="/faces/registraEsame.jsp" />' class="btn btn-info">Registra un esame</a></h1>
+			<h1><a href='<c:url value="/faces/registraMedico.jsp" />' class="btn btn-info">Registra un medico</a></h1>
+			<h1><a href='<c:url value="/faces/associaMedicoEsame.jsp" />' class="btn btn-info">Associa un medico a un esame</a></h1>
+			<h1><a href='<c:url value="/faces/esamiMedico.jsp" />' class="btn btn-info">Consulta gli esami che effettua un certo medico</a></h1>
+			
 		</c:if>
 		<c:if test="${pazienteController.corrente != null}">
 			<h1><h:form><h:commandLink styleClass="btn btn-info" action="#{tipoEsameController.listTipoEsami}" value="Guarda le nostre offerte"/></h:form></h1>

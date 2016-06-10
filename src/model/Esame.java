@@ -34,8 +34,8 @@ public class Esame {
 //	@OneToOne
 //	private RisultatoEsame risultato;
 	
-//	@ManyToOne
-//	private Medico medico;
+	@ManyToOne
+	private Medico medico;
 	
 	@ManyToOne
 	private Paziente paziente;
@@ -91,7 +91,7 @@ public class Esame {
 	public void setRisultato(RisultatoEsame risultato) {
 		this.risultato = risultato;
 	}
-
+*/
 	public Medico getMedico() {
 		return medico;
 	}
@@ -99,7 +99,7 @@ public class Esame {
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
-*/
+
 	public Paziente getPaziente() {
 		return paziente;
 	}

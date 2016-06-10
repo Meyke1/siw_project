@@ -8,6 +8,8 @@ import javax.faces.bean.ManagedProperty;
 
 import model.Esame;
 import model.EsameFacade;
+import model.Medico;
+import model.MedicoFacade;
 //import model.Medico;
 //import model.MedicoFacade;
 import model.Paziente;
@@ -22,8 +24,8 @@ public class EsameController {
 	private Long id;
 	private String pid;
 	private Paziente paziente;
-	private String mid;
-	//private Medico medico;
+	private Long mid;
+	private Medico medico;
 	private Esame esame;
 	private List<Esame> esami;
 	private String tid;
@@ -35,8 +37,8 @@ public class EsameController {
 	private EsameFacade eFacade;
 	@EJB
 	private PazienteFacade pFacade;
-	//@EJB
-	//private MedicoFacade mFacade;
+	@EJB
+	private MedicoFacade mFacade;
 	@EJB
 	private TipoEsameFacade tFacade;
 	
@@ -46,6 +48,14 @@ public class EsameController {
 		this.tipoEsame = this.tFacade.findTipoEsame(tid);
 		this.esame = this.eFacade.createEsame(paziente, tipoEsame, code, new Date());
 		return "esame"; 
+	}
+	
+	public String associaMedico(){
+		this.medico = this.mFacade.getMedico(mid);
+		this.esame = this.eFacade.findEsame(code);
+		this.esame.setMedico(medico);
+		this.eFacade.updateEsame(esame);
+		return "esame";
 	}
 	
 	public String getTid() {
@@ -103,14 +113,16 @@ public class EsameController {
 		this.paziente = paziente;
 	}
 
-	public String getMid() {
+	
+
+	public Long getMid() {
 		return mid;
 	}
 
-	public void setMid(String mid) {
+	public void setMid(Long mid) {
 		this.mid = mid;
 	}
-/*
+
 	public Medico getMedico() {
 		return medico;
 	}
@@ -118,8 +130,17 @@ public class EsameController {
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
-*/
+
+	public MedicoFacade getmFacade() {
+		return mFacade;
+	}
+
+	public void setmFacade(MedicoFacade mFacade) {
+		this.mFacade = mFacade;
+	}
+
 	public Esame getEsame() {
+		
 		return esame;
 	}
 
@@ -128,6 +149,7 @@ public class EsameController {
 	}
 
 	public List<Esame> getEsami() {
+		this.esami = eFacade.getAllEsami();
 		return esami;
 	}
 
@@ -174,14 +196,6 @@ public class EsameController {
 	public void setCode(String code) {
 		this.code = code;
 	}
-/*
-	public MedicoFacade getmFacade() {
-		return mFacade;
-	}
 
-	public void setmFacade(MedicoFacade mFacade) {
-		this.mFacade = mFacade;
-	}
-*/
 	
 }

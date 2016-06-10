@@ -19,6 +19,10 @@
                    <li>codice: ${esameController.esame.paziente.code}</li>
                </ul>
 </div>
+<div>Medico: <ul><li>nome: ${esameController.esame.medico.nome}</li>
+                   <li>cognome: ${esameController.esame.medico.cognome}</li>
+               </ul>
+</div>
 <ul>
 	<c:if test="${amministratoreController.corrente != null}">	
 		<li><a href='<c:url value="/faces/registraEsame.jsp" />'>Inserisci un nuovo esame</a></li>

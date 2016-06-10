@@ -13,6 +13,7 @@
 <h2>Dettagli</h2>
 <div>Codice: ${esameController.esame.code}</div>
 <div>Prezzo: ${esameController.esame.tipoEsame.price}</div>
+<div>Data Prenotazione: ${esameController.esame.dataPrenotazione}</div>
 <div>Paziente: <ul><li>nome: ${esameController.esame.paziente.nome}</li>
                    <li>cognome: ${esameController.esame.paziente.cognome}</li>
                    <li>codice: ${esameController.esame.paziente.code}</li>

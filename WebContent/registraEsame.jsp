@@ -19,20 +19,19 @@
                      requiredMessage="Il codice e' obbligatorio"
                      id="codice"/> <h:message for="codice" />
 	</div>
-    <div>Codice Tipo Esame:<h:inputText value="#{esameController.tid}" 
-                     required="true"
-                     requiredMessage="Il codice e' obbligatorio"
-                     id="tipo"/> <h:message for="tipo" />
+    <div>Codice Tipo Esame:<h:selectOneMenu value="#{esameController.tid}">
+           <f:selectItems value="#{tipoEsameController.tps}" var="tp" itemLabel="#{tp.nome}" itemValue="#{tp.code}"/>			
+         </h:selectOneMenu>
 	</div>
     <!--  <div>Codice Medico: <h:inputText value="#{esameController.mid}" 
                      required="true"
                      requiredMessage="Il codice e' obbligatorio"
                      id="medico"/> <h:message for="medico" />
 	</div>-->
-	<div>Codice Paziente: <h:inputText value="#{esameController.pid}" 
-                     required="true"
-                     requiredMessage="Il codice e' obbligatorio"
-                     id="paziente"/> <h:message for="paziente" />
+	<div>Codice Paziente: <h:selectOneMenu value="#{esameController.pid}">
+	       <f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+           <f:selectItems value="#{pazienteController.pazienti}" var="paziente" itemLabel="#{paziente.nome},#{paziente.cognome},#{paziente.code} " itemValue="#{paziente.code}"/>			
+         </h:selectOneMenu>
 	</div>
    
 	

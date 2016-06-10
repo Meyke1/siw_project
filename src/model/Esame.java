@@ -28,6 +28,9 @@ public class Esame {
 	@JoinColumn (name="tipoEsame_id")
 	private TipoEsame tipoEsame;
 	
+	@Temporal (TemporalType.TIMESTAMP)
+	private Date dataPrenotazione;
+	
 //	@OneToOne
 //	private RisultatoEsame risultato;
 	
@@ -40,12 +43,13 @@ public class Esame {
 	
 	public Esame(){}
 
-	public Esame(Paziente paziente, TipoEsame tipoEsame, String code) {
+	public Esame(Paziente paziente, TipoEsame tipoEsame, String code, Date dataPrenotazione) {
 		super();
 		//this.medico = medico;
 		this.paziente = paziente;
 		this.tipoEsame = tipoEsame;
 		this.code = code;
+		this.dataPrenotazione = dataPrenotazione;
 	}
 
 	public String getCode() {
@@ -103,6 +107,16 @@ public class Esame {
 	public void setPaziente(Paziente paziente) {
 		this.paziente = paziente;
 	}
+
+	public Date getDataPrenotazione() {
+		return dataPrenotazione;
+	}
+
+	public void setDataPrenotazione(Date dataPrenotazione) {
+		this.dataPrenotazione = dataPrenotazione;
+	}
+	
+	
 	
 	
 	

@@ -93,6 +93,7 @@ public class TipoEsameController {
 	}
 
 	public List<TipoEsame> getTps() {
+		this.tps = facade.getAllTipoEsame();
 		return tps;
 	}
 

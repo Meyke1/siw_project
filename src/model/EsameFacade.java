@@ -1,6 +1,7 @@
 package model;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -15,8 +16,8 @@ public class EsameFacade {
 	@PersistenceContext(unitName= "siw-progetto")
 	private EntityManager em;
 	
-	public Esame createEsame(Paziente paziente, TipoEsame tipoEsame, String code) {
-		Esame esame = new Esame(paziente, tipoEsame, code);
+	public Esame createEsame(Paziente paziente, TipoEsame tipoEsame, String code, Date dataPrenotazione) {
+		Esame esame = new Esame(paziente, tipoEsame, code, dataPrenotazione);
 		em.persist(esame);
 		return esame;
 	}

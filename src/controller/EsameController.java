@@ -1,4 +1,5 @@
 package controller;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -28,14 +29,7 @@ public class EsameController {
 	private String tid;
 	private TipoEsame tipoEsame;
 	private String code;
-	
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
+	private Date dataDiPrenotazione;
 
 	@EJB
 	private EsameFacade eFacade;
@@ -50,7 +44,7 @@ public class EsameController {
 		this.paziente = this.pFacade.findPaziente(pid);
 		//this.medico = this.mFacade.getMedico(mid);
 		this.tipoEsame = this.tFacade.findTipoEsame(tid);
-		this.esame = this.eFacade.createEsame(paziente, tipoEsame, code);
+		this.esame = this.eFacade.createEsame(paziente, tipoEsame, code, new Date());
 		return "esame"; 
 	}
 	
@@ -163,6 +157,22 @@ public class EsameController {
 
 	public void setpFacade(PazienteFacade pFacade) {
 		this.pFacade = pFacade;
+	}
+
+	public Date getDataDiPrenotazione() {
+		return dataDiPrenotazione;
+	}
+
+	public void setDataDiPrenotazione(Date dataDiPrenotazione) {
+		this.dataDiPrenotazione = dataDiPrenotazione;
+	}
+	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 /*
 	public MedicoFacade getmFacade() {

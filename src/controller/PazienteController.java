@@ -182,6 +182,7 @@ public class PazienteController {
 	}
 */
 	public List<Paziente> getPazienti() {
+		this.pazienti = pazienteFacade.getAllPazienti();
 		return pazienti;
 	}
 

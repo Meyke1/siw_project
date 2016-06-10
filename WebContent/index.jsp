@@ -84,6 +84,7 @@
 			<h1><a href='<c:url value="/faces/registraMedico.jsp" />' class="btn btn-info">Registra un medico</a></h1>
 			<h1><a href='<c:url value="/faces/associaMedicoEsame.jsp" />' class="btn btn-info">Associa un medico a un esame</a></h1>
 			<h1><a href='<c:url value="/faces/esamiMedico.jsp" />' class="btn btn-info">Consulta gli esami che effettua un certo medico</a></h1>
+			<h1><a href='<c:url value="/faces/inserisciRisultato.jsp" />' class="btn btn-info">inserisci risultato di un certo esame</a></h1>
 			
 		</c:if>
 		<c:if test="${pazienteController.corrente != null}">

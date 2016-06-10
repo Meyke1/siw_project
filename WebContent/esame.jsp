@@ -23,6 +23,22 @@
                    <li>cognome: ${esameController.esame.medico.cognome}</li>
                </ul>
 </div>
+<div>Risultati:
+<h:form>
+<table>
+	<tr>
+		<th><font color="#008800" size="4" face="Arial" >Nome Risultato </font></th>
+		<th><font color="#008800" size="4" face="Arial" >Valore Risultato </font></th> 
+	</tr>
+	<c:forEach var="risultato" items="#{esameController.esame.risultati}">
+		<tr>		
+		<td>${risultato.nome}</td>
+		<td>${risultato.valore}</td>
+		</tr>
+	</c:forEach>
+</table>
+</h:form>
+</div>
 <ul>
 	<c:if test="${amministratoreController.corrente != null}">	
 		<li><a href='<c:url value="/faces/registraEsame.jsp" />'>Inserisci un nuovo esame</a></li>

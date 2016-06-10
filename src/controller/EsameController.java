@@ -12,6 +12,7 @@ import model.Medico;
 import model.MedicoFacade;
 import model.Paziente;
 import model.PazienteFacade;
+import model.RisultatoEsame;
 import model.TipoEsame;
 import model.TipoEsameFacade;
 
@@ -34,6 +35,9 @@ public class EsameController {
 	private String nomeMedico;
 	private String cognomeMedico;
 	private String errore;
+	private String nomeRisultato;
+	private String valoreRisultato;
+	private RisultatoEsame risultato;
 
 	@EJB
 	private EsameFacade eFacade;
@@ -58,6 +62,15 @@ public class EsameController {
 		this.esame.setMedico(medico);
 		this.eFacade.updateEsame(esame);
 		return "esame";
+	}
+	
+	public String inserisciRisultato(){
+		this.esame = this.eFacade.findEsame(code);
+		this.risultato = new RisultatoEsame(nomeRisultato, valoreRisultato);
+		this.esame.addRisultato(risultato);
+		this.eFacade.updateEsame(esame);
+		return "esame";
+		
 	}
 	
 	public String findEsamiMedico(){
@@ -243,6 +256,30 @@ public class EsameController {
 
 	public void setErrore(String errore) {
 		this.errore = errore;
+	}
+
+	public String getNomeRisultato() {
+		return nomeRisultato;
+	}
+
+	public void setNomeRisultato(String nomeRisultato) {
+		this.nomeRisultato = nomeRisultato;
+	}
+
+	public String getValoreRisultato() {
+		return valoreRisultato;
+	}
+
+	public void setValoreRisultato(String valoreRisultato) {
+		this.valoreRisultato = valoreRisultato;
+	}
+
+	public RisultatoEsame getRisultato() {
+		return risultato;
+	}
+
+	public void setRisultato(RisultatoEsame risultato) {
+		this.risultato = risultato;
 	}
 	
 	

@@ -1,14 +1,19 @@
 package model;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 //import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,10 +35,12 @@ public class Esame {
 	
 	@Temporal (TemporalType.TIMESTAMP)
 	private Date dataPrenotazione;
+
+	@OneToMany (fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
+    @JoinColumn (name = "esame_id")
+	private List<RisultatoEsame> risultati;
 	
-//	@OneToOne
-//	private RisultatoEsame risultato;
-	
+
 	@ManyToOne
 	private Medico medico;
 	
@@ -50,6 +57,7 @@ public class Esame {
 		this.tipoEsame = tipoEsame;
 		this.code = code;
 		this.dataPrenotazione = dataPrenotazione;
+		this.risultati = new LinkedList<>();
 	}
 
 	public String getCode() {
@@ -115,6 +123,20 @@ public class Esame {
 	public void setDataPrenotazione(Date dataPrenotazione) {
 		this.dataPrenotazione = dataPrenotazione;
 	}
+
+	public List<RisultatoEsame> getRisultati() {
+		return risultati;
+	}
+
+	public void setRisultati(List<RisultatoEsame> risultati) {
+		this.risultati = risultati;
+	}
+	
+	public void addRisultato(RisultatoEsame risultato){
+		this.risultati.add(risultato);
+	}
+	
+	
 	
 	
 	

@@ -13,9 +13,8 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
 
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>SIW-PROGETTO-ESAME</title>
@@ -43,13 +42,29 @@
 		</c:if></li>
 		<li><c:if test="${amministratoreController.corrente == null && pazienteController.corrente == null}">
 			<a href='<c:url value="/faces/loginAmministratore.jsp" />'>Effettua il login Amministratore</a>
-		</c:if></li>
-		<li><c:if test="${amministratoreController.corrente != null}">
-			<h:form><h:commandLink styleClass="btn btn-info" action="#{amministratoreController.logoutAmministratore}" value="LOGOUT"/></h:form>
+		</c:if></li>	
+		<c:if test="${amministratoreController.corrente != null}">
+		 <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Operazioni <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href='<c:url value="/faces/newTipoEsame.jsp" />'>Inserisci un nuovo tipo di esame </a></li>
+                  <li><a href='<c:url value="/faces/registraPaziente.jsp" />'>Registra Paziente</a></li>
+			      <li><a href='<c:url value="/faces/registraEsame.jsp" />'>Registra un esame</a></li>
+			      <li><a href='<c:url value="/faces/registraMedico.jsp" />'>Registra un medico</a></li>
+			      <li><a href='<c:url value="/faces/associaMedicoEsame.jsp" />'>Associa un medico a un esame</a></li>
+			      <li><a href='<c:url value="/faces/esamiMedico.jsp" />'>Consulta gli esami che effettua un certo medico</a></li>
+			      <li><a href='<c:url value="/faces/inserisciRisultato.jsp" />'>inserisci risultato di un certo esame</a></li>
+                  
+                </ul>
+              </li>
+         </c:if>
+         <li><c:if test="${amministratoreController.corrente != null}">
+			<h:form><h:commandLink styleClass="btn btn-link btn-lg" action="#{amministratoreController.logoutAmministratore}" value="Sign-out"/></h:form>
 		</c:if></li>
 		<li><c:if test="${pazienteController.corrente != null}">
-			<h:form><h:commandLink styleClass="btn btn-info" action="#{pazienteController.logoutPaziente}" value="LOGOUT"/></h:form>
-		</c:if></li>	
+			<h:form><h:commandLink styleClass="btn btn-link btn-lg" action="#{pazienteController.logoutPaziente}" value="Sign-out"/></h:form>
+		</c:if></li>
+   
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
@@ -76,19 +91,7 @@
 		<c:if test="${amministratoreController.corrente == null && pazienteController.corrente == null}">
 			<h1>Non sei registrato? Chiedi a un Amministratore!</h1>
 		</c:if>
-
-		<c:if test="${amministratoreController.corrente != null}">
-			<h1><a href='<c:url value="/faces/newTipoEsame.jsp" />' class="btn btn-info">Inserisci un nuovo tipo di esame </a></h1>
-		    <h1><a href='<c:url value="/faces/registraPaziente.jsp" />' class="btn btn-info">Registra Paziente</a></h1>
-			<h1><a href='<c:url value="/faces/registraEsame.jsp" />' class="btn btn-info">Registra un esame</a></h1>
-			<h1><a href='<c:url value="/faces/registraMedico.jsp" />' class="btn btn-info">Registra un medico</a></h1>
-			<h1><a href='<c:url value="/faces/associaMedicoEsame.jsp" />' class="btn btn-info">Associa un medico a un esame</a></h1>
-			<h1><a href='<c:url value="/faces/esamiMedico.jsp" />' class="btn btn-info">Consulta gli esami che effettua un certo medico</a></h1>
-			<h1><a href='<c:url value="/faces/inserisciRisultato.jsp" />' class="btn btn-info">inserisci risultato di un certo esame</a></h1>
-			
-		</c:if>
 		<c:if test="${pazienteController.corrente != null}">
-			<h1><h:form><h:commandLink styleClass="btn btn-info" action="#{tipoEsameController.listTipoEsami}" value="Guarda le nostre offerte"/></h:form></h1>
 			<h1><h:form><h:commandLink styleClass="btn btn-info" action="#{esameController.listEsami}" value="Consulta gli esami a cui sei prenotato">
 				<f:param name="uid" value="#{pazienteController.corrente.id}" />
 			</h:commandLink>

@@ -53,7 +53,7 @@
 			      <li><a href='<c:url value="/faces/registraMedico.jsp" />'>Registra un medico</a></li>
 			      <li><a href='<c:url value="/faces/associaMedicoEsame.jsp" />'>Associa un medico a un esame</a></li>
 			      <li><a href='<c:url value="/faces/esamiMedico.jsp" />'>Consulta gli esami che effettua un certo medico</a></li>
-			      <li><a href='<c:url value="/faces/inserisciRisultato.jsp" />'>inserisci risultato di un certo esame</a></li>
+			      <li><a href='<c:url value="/faces/inserisciRisultato.jsp" />'>Inserisci risultato di un certo esame</a></li>
                   
                 </ul>
               </li>
@@ -104,7 +104,7 @@
 		</ul>
 		<h2>Realizzato dagli studenti:</h2>
 		<ul>
-			<li>Tedesco Michele</li>
+			<li>Tedesco Michele 470338</li>
 		</ul> 
 	</f:view>
 </body>

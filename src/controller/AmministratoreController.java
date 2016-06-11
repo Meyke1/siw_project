@@ -33,10 +33,10 @@ public class AmministratoreController {
 		return "amministratore"; 
 	}
 	
-	public String listAmministratori() {
-		this.amministratori = aFacade.getAllAmministratori();
-		return "amministratori"; 
-	}
+	//public String listAmministratori() {
+	//	this.amministratori = aFacade.getAllAmministratori();
+	//	return "amministratori"; 
+	//}
 
 	public String findAmministratore() {
 		this.amministratore = aFacade.getAmministratore(id);

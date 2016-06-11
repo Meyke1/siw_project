@@ -58,14 +58,14 @@ public class EsameController {
 	
 	public String associaMedico(){
 		this.medico = this.mFacade.getMedico(mid);
-		this.esame = this.eFacade.findEsame(code);
+		this.esame = this.eFacade.getEsame(id);
 		this.esame.setMedico(medico);
 		this.eFacade.updateEsame(esame);
 		return "esame";
 	}
 	
 	public String inserisciRisultato(){
-		this.esame = this.eFacade.findEsame(code);
+		this.esame = this.eFacade.getEsame(id);
 		this.risultato = new RisultatoEsame(nomeRisultato, valoreRisultato);
 		this.esame.addRisultato(risultato);
 		this.eFacade.updateEsame(esame);
@@ -281,6 +281,7 @@ public class EsameController {
 	public void setRisultato(RisultatoEsame risultato) {
 		this.risultato = risultato;
 	}
+
 	
 	
 	

@@ -21,7 +21,7 @@ public class Amministratore {
 	@Column(nullable=false,name = "nome")
 	private String nome;
 	
-	@Column(nullable=false,name = "mail")
+	@Column(nullable=false,name = "username", unique = true)
 	private String username;
 	
 	@Column(nullable=false,name = "password")

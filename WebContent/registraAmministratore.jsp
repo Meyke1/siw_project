@@ -52,9 +52,6 @@
 			<div>
 				<h:commandButton styleClass="btn btn-default" value="Submit" action="#{amministratoreController.createAmministratore}"/>
 			</div>
-			<div>
-			<h:commandLink styleClass="btn btn-default" action="#{amministratoreController.listAmministratori}" value="Lista degli Amministratori" />
-		    </div>
 		</h:form>
 		
 		<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>

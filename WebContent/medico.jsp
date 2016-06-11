@@ -4,18 +4,41 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Profilo del medico</title>
 </head>
 <body>
 <f:view>
-<h1>${medicoController.medico.nome}</h1>
+<div class="container">
 <h2>Dettagli Medico</h2>
-<div>Nome: ${medicoController.medico.nome}</div>
-<div>Cognome: ${medicoController.medico.cognome}</div>
-<div>Specializzazione: ${medicoController.medico.specializzazione}</div>
-<h2><a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a></h2>
+<table class="table table-striped">
+				<thead></thead>
+				<tbody>
+					<tr>
+						<td>Nome: ${medicoController.medico.nome}</td>
+					</tr>
+					<tr>
+						<td>Cognome: ${medicoController.medico.cognome}</td>
+					</tr>
+					<tr>
+						<td>Specializzazione: ${medicoController.medico.specializzazione}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+<h5><a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a></h5>
 </f:view>
 </body>
 </html>

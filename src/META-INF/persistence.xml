@@ -5,12 +5,14 @@
 	<persistence-unit name="siw-progetto" transaction-type="JTA">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<jta-data-source>PostgreSQL Database</jta-data-source>
+	<!--  	<non-jta-data-source>PostgreSQL Database</non-jta-data-source> -->
 		<class>model.TipoEsame</class>
 		<class>model.Esame</class>
 		<class>model.Medico</class>
 		<class>model.Paziente</class>
 		<class>model.Amministratore</class>
-		<class>model.RisultatoEsame</class>		
+		<class>model.RisultatoEsame</class>
+		<class>model.Prerequisito</class>	
 		<properties>
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
 		</properties>

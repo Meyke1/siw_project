@@ -3,12 +3,18 @@ package model;
 //import java.util.ArrayList;
 //import java.util.List;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 //import javax.persistence.OneToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TipoEsame {
@@ -25,8 +31,9 @@ public class TipoEsame {
 	@Column(nullable = false)
 	private String code;
 	
-	//@OneToMany(mappedBy = "tipoEsame")
-	//private List<Esame> esami;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn (name = "tipoEsame_id")
+    private List<Prerequisito> prerequisiti;
 	
 	
 	
@@ -43,7 +50,6 @@ public class TipoEsame {
 		this.descrizione = descrizione;
 		this.price = price;
 		this.code = code;
-		//this.esami = new ArrayList<>(); 
 	}
 
 
@@ -89,13 +95,22 @@ public class TipoEsame {
 		this.code = code;
 	}
 
-	/*public List<Esame> getEsami() {
-		return esami;
+
+
+
+	public List<Prerequisito> getPrerequisiti() {
+		return prerequisiti;
 	}
 
-	public void setEsami(List<Esame> esami) {
-		this.esami = esami;
-	}*/
+
+
+
+	public void setPrerequisiti(List<Prerequisito> prerequisiti) {
+		this.prerequisiti = prerequisiti;
+	}
+
+	
+	
 
 
 	

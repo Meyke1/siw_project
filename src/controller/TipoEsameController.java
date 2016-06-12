@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
+import model.Prerequisito;
 import model.TipoEsame;
 import model.TipoEsameFacade;
 
@@ -20,6 +21,7 @@ public class TipoEsameController {
 	private String code;
 	private TipoEsame tp;
 	private List<TipoEsame> tps;
+	private List<Prerequisito> prerequisiti;
 	
 	@EJB
 	private TipoEsameFacade facade;
@@ -108,6 +110,18 @@ public class TipoEsameController {
 	public void setFacade(TipoEsameFacade facade) {
 		this.facade = facade;
 	}
+
+	public List<Prerequisito> getPrerequisiti() {
+		return prerequisiti;
+	}
+
+	public void setPrerequisiti(List<Prerequisito> prerequisiti) {
+		this.prerequisiti = prerequisiti;
+	}
+	
+	
+	
+	
 
 
 
